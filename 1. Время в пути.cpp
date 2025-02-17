@@ -29,7 +29,7 @@ int main()
         durHours = durMin / 60;
         durMin = durMin % 60;
          if (arTime < depTime) {
-             durHours = 24 + durHours;
+             durHours = 23 + durHours;
              durMin = 60 + durMin;
          }
         std::cout << "Поездка составила " << durHours << " ч. " << durMin << " мин.";
