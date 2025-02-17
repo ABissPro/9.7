@@ -28,10 +28,19 @@ int main()
         durMin = 60 * durHours + durMin;
         durHours = durMin / 60;
         durMin = durMin % 60;
-         if (arTime < depTime) {
-             durHours = 23 + durHours;
-             durMin = 60 + durMin;
-         }
+        if (arTime < depTime) {
+            int difHours = (10 * (depTime[0] - '0') + (depTime[1] - '0')) 
+                 - (10 * (arTime[0] - '0') + (arTime[1] - '0'));
+            int difMin = (10 * (depTime[3] - '0') + (depTime[4] - '0')) 
+                - (10 * (arTime[3] - '0') + (arTime[4] - '0'));
+            durHours = 23 - difHours;
+            durMin = 60 - difMin;
+        }
+        else if (arTime == depTime) {
+            durHours = 24;
+            durMin = 0;
+        }
+        
         std::cout << "Поездка составила " << durHours << " ч. " << durMin << " мин.";
     }
 }
